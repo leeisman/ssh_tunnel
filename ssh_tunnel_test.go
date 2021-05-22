@@ -1,6 +1,8 @@
 package ssh_tunnel
 
 import (
+	"fmt"
+	"os"
 	"testing"
 	"time"
 )
@@ -46,7 +48,7 @@ func TestGetTunnelConf(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			GetTunnelConf()
+			GetTunnelConf(getWorkingDirPath())
 		})
 	}
 }
@@ -61,8 +63,17 @@ func TestTunnelByConf(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			TunnelByConf()
+			TunnelByConf(getWorkingDirPath())
 		})
 	}
 	time.Sleep(time.Second * 100)
+}
+
+func getWorkingDirPath() string {
+	dir, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("workingDirPath:", dir)
+	return dir
 }

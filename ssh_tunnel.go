@@ -5,7 +5,6 @@ import (
 	"github.com/rgzr/sshtun"
 	"github.com/spf13/viper"
 	"log"
-	"os"
 	"time"
 )
 
@@ -45,15 +44,6 @@ func GetTunnelConf(configPath string) *SSHConfigs {
 	}
 	fmt.Println(sshConfig)
 	return sshConfig
-}
-
-func getWorkingDirPath() string {
-	dir, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("workingDirPath:", dir)
-	return dir
 }
 
 func Tunnel(localPort int, sshHost string, sshPort int, remoteHost string, remotePort int) {
