@@ -13,8 +13,8 @@ type SSHConfigs struct {
 	SSH [][]interface{}
 }
 
-func TunnelByConf() {
-	sshConfigs := GetTunnelConf()
+func TunnelByConf(configPath stirng) {
+	sshConfigs := GetTunnelConf(configPath)
 	if sshConfigs == nil {
 		return
 	}
@@ -28,11 +28,11 @@ func TunnelByConf() {
 	}
 }
 
-func GetTunnelConf() *SSHConfigs {
+func GetTunnelConf(configPath string) *SSHConfigs {
 	var sshConfig *SSHConfigs
-	viper.SetConfigName("ssh")               // name of config file (without extension)
-	viper.SetConfigType("yaml")              // REQUIRED if the config file does not have the extension in the name
-	viper.AddConfigPath(getWorkingDirPath()) // optionally look for config in the working directory
+	viper.SetConfigName("ssh")      // name of config file (without extension)
+	viper.SetConfigType("yaml")     // REQUIRED if the config file does not have the extension in the name
+	viper.AddConfigPath(configPath) // optionally look for config in the working directory
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Printf("unable to decode into struct, %v", err)
