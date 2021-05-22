@@ -1,4 +1,4 @@
-module ssh_tunnel
+module github.com/leeisman/ssh_tunnel
 
 go 1.15
 
