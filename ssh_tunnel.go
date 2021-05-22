@@ -13,7 +13,7 @@ type SSHConfigs struct {
 	SSH [][]interface{}
 }
 
-func TunnelByConf(configPath stirng) {
+func TunnelByConf(configPath string) {
 	sshConfigs := GetTunnelConf(configPath)
 	if sshConfigs == nil {
 		return
