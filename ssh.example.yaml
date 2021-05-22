@@ -1,0 +1,2 @@
+ssh:
+  - [ { localport },"ssh host",{ ssh host port },"remote host",{ remote host } ]
