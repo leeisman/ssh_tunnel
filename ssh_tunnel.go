@@ -46,14 +46,15 @@ func GetTunnelConf(configPath string) *SSHConfigs {
 	return sshConfig
 }
 
-func Tunnel(localPort int, sshHost string, sshPort int, remoteHost string, remotePort int) {
+
+func Tunnel(localPort int, sshHost string, sshPort int, remoteHost string, remotePort int, user string) {
 	// We want to connect to port 8080 on our machine to access port 80 on my.super.host.com
 	sshTun := sshtun.New(localPort, sshHost, remotePort)
 	sshTun.SetPort(sshPort)
 	sshTun.SetRemoteHost(remoteHost)
 	// We enable debug messages to see what happens
 	sshTun.SetDebug(true)
-
+	sshTun.SetUser(user)
 	// We set a callback to know when the tunnel is ready
 	sshTun.SetConnState(func(tun *sshtun.SSHTun, state sshtun.ConnState) {
 		switch state {
