@@ -23,7 +23,7 @@ func TunnelByConf(configPath string) {
 		sshHostPort := sshConfig[2].(int)
 		remoteHost := fmt.Sprint(sshConfig[3])
 		remoteHostPort := sshConfig[4].(int)
-		Tunnel(localPort, sshHost, sshHostPort, remoteHost, remoteHostPort)
+		Tunnel(localPort, sshHost, sshHostPort, remoteHost, remoteHostPort, "root")
 	}
 }
 
@@ -45,7 +45,6 @@ func GetTunnelConf(configPath string) *SSHConfigs {
 	fmt.Println(sshConfig)
 	return sshConfig
 }
-
 
 func Tunnel(localPort int, sshHost string, sshPort int, remoteHost string, remotePort int, user string) {
 	// We want to connect to port 8080 on our machine to access port 80 on my.super.host.com

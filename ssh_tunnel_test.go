@@ -32,7 +32,7 @@ func TestTunnel(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			Tunnel(tt.args.localPort, tt.args.sshHost, tt.args.sshPort, tt.args.remoteHost, tt.args.remotePort)
+			Tunnel(tt.args.localPort, tt.args.sshHost, tt.args.sshPort, tt.args.remoteHost, tt.args.remotePort, "root")
 		})
 		time.Sleep(time.Second * 100)
 	}
